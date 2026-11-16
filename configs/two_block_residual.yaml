@@ -1,0 +1,24 @@
+# Two blocks with residual connections: the smallest variant that can form an
+# induction head, and therefore solve the recall tasks. No normalization.
+task:
+  name: in-context-recall
+  train_targets: masked
+
+model:
+  n_blocks: 2
+  dim: 128
+  mlp_ratio: 4
+  residual: true
+  norm: false
+  bias: false
+
+train:
+  epochs: 200
+  batch_size: 128
+  lr: 5.0e-4
+
+record:
+  early_every_steps: 10
+  early_until_step: 500
+  every_steps: 500
+  probe_size: 4
